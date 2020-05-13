@@ -1,6 +1,6 @@
 # Chi proxy middleware
 
-Forwarded headers middleware to use if application is run behinde reverse proxy.
+Forwarded headers middleware to use if application is run behind reverse proxy.
 
 [![Documentation](https://godoc.org/github.com/chi-middleware/proxy?status.svg)](https://pkg.go.dev/github.com/chi-middleware/proxy)
 [![codecov](https://codecov.io/gh/chi-middleware/proxy/branch/master/graph/badge.svg)](https://codecov.io/gh/chi-middleware/proxy)
