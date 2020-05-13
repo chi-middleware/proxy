@@ -1,4 +1,4 @@
-# Chi proxy middleware
+# [Chi](https://github.com/go-chi/chi) proxy middleware
 
 Forwarded headers middleware to use if application is run behind reverse proxy.
 
