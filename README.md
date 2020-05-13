@@ -2,7 +2,7 @@
 
 Forwarded headers middleware to use if application is run behinde reverse proxy.
 
-[![GoDoc](https://pkg.go.dev/github.com/chi-middleware/proxy?status.svg)](https://pkg.go.dev/github.com/chi-middleware/proxy)
+[![Documentation](https://godoc.org/github.com/chi-middleware/proxy?status.svg)](https://pkg.go.dev/github.com/chi-middleware/proxy)
 [![codecov](https://codecov.io/gh/chi-middleware/proxy/branch/master/graph/badge.svg)](https://codecov.io/gh/chi-middleware/proxy)
 [![Go Report Card](https://goreportcard.com/badge/github.com/chi-middleware/proxy)](https://goreportcard.com/report/github.com/chi-middleware/proxy)
 [![Build Status](https://cloud.drone.io/api/badges/chi-middleware/proxy/status.svg?ref=refs/heads/master)](https://cloud.drone.io/chi-middleware/proxy)
