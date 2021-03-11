@@ -9,7 +9,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/v5"
 	"github.com/stretchr/testify/assert"
 )
 
@@ -75,6 +75,30 @@ func TestTrustedProxy(t *testing.T) {
 	realIP := testRequest(t, req, ForwardedHeaders(
 		NewForwardedHeadersOptions().
 			ClearTrustedProxies().AddTrustedProxy("127.0.1.2"),
+	))
+	assert.Equal(t, "100.100.100.100:0", realIP, "Request IP address")
+}
+
+func TestTrustedAllProxiesWildcard(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.Header.Add("X-Real-IP", "100.100.100.100")
+	req.RemoteAddr = "127.0.1.2:111"
+
+	realIP := testRequest(t, req, ForwardedHeaders(
+		NewForwardedHeadersOptions().
+			ClearTrustedProxies().AddTrustedProxy("*"),
+	))
+	assert.Equal(t, "100.100.100.100:0", realIP, "Request IP address")
+}
+
+func TestTrustedAllProxies(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.Header.Add("X-Real-IP", "100.100.100.100")
+	req.RemoteAddr = "127.0.1.2:111"
+
+	realIP := testRequest(t, req, ForwardedHeaders(
+		NewForwardedHeadersOptions().
+			ClearTrustedProxies().TrustAllProxies(),
 	))
 	assert.Equal(t, "100.100.100.100:0", realIP, "Request IP address")
 }

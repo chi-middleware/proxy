@@ -15,7 +15,7 @@ Import using:
 import "github.com/chi-middleware/proxy"
 ```
 
-Use middleware with default options:
+Use middleware with default options (trusted from proxy `127.0.0.1` and trusts only last IP address provided in header):
 
 ```go
     r := chi.NewRouter()
