@@ -49,6 +49,23 @@ func TestXForwardForIP(t *testing.T) {
 	assert.Equal(t, "100.100.100.100:0", realIP, "Request IP address")
 }
 
+func TestUnixSocket(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.RemoteAddr = "@"
+
+	realIP := testRequest(t, req, ForwardedHeaders())
+	assert.Equal(t, "127.0.0.1:0", realIP, "Request IP address")
+}
+
+func TestUnixSocketXForwardedFor(t *testing.T) {
+	req, _ := http.NewRequest("GET", "/", nil)
+	req.Header.Add("X-Forwarded-For", "100.100.100.100")
+	req.RemoteAddr = "@"
+
+	realIP := testRequest(t, req, ForwardedHeaders())
+	assert.Equal(t, "100.100.100.100:0", realIP, "Request IP address")
+}
+
 func TestXForwardForMultipleIP(t *testing.T) {
 	req, _ := http.NewRequest("GET", "/", nil)
 	req.Header.Add("X-Forwarded-For", "100.100.100.100, 10.0.1.1, 10.1.1.3")
